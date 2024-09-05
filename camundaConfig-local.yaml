@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=camunda
+    username: postgres
+    password: Mexico1403
+    
+server:
+  port: 8089
+  ssl:
+    key-alias: local_ssl
+    key-store-password: thankit
+    key-store-type: PKCS12
+    key-store: classpath:keystore/local-ssl.p12
+    enabled: false
+ 
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+  
+trust:
+  store:
+    classpath: keystore/2024.pfx
+    password: HUA2024
+ 
+camunda:
+  bpm:
+    authorization:
+      enabled: true
+    webapp:
+      header-security:
+        content-security-policy-disabled: true
+ 
+encryption:
+  sharedSecret: SecretText_XHGFXHGF1X2HGF3XHG4XF5
+        
+directory:
+  service:
+    url: http://localhost/directorio/AutenticarPersona

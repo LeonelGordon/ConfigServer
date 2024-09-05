@@ -1,0 +1,109 @@
+spring:
+  sql:
+    init:
+      mode: always
+  mvc:
+    dispatch-options-request: true
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  datasource:
+    url: jdbc:sqlserver://bpmbussinesdev.cihtnb2nq8yw.sa-east-1.rds.amazonaws.com:1433;database=BPMBussinesDev;integratedSecurity=false;user=HUA-BPM-DEV;password=thankit2023;instanceName=bpmbussinesdev;    
+    username: HUA-BPM-DEV
+    password: thankit2023
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+
+## File Storage Properties
+# All files uploaded through the REST API will be stored in this directory
+file.upload-dir: C:/bpm/files/
+        
+        
+
+## CORS ORIGIN
+cors:
+  mapping: "/**"
+  allowed-origins: http://localhost:8080, http://localhost:80, http://localhost:4200
+  allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+  allowed-head: "*"
+  
+server:
+  port: 443
+  ssl:
+    key-alias: le-faac2601-a0dd-4cef-a7b4-e78a6ecd624e
+    key-store-password: asdf1234 
+    key-store-type: PKCS12
+    key-store: classpath:keystore/HUA2025.pfx
+    enabled: true
+    
+trust.store: classpath:keystore/HUA2025.pfx
+trust.store.password: asdf1234
+
+camunda:
+  bpm:
+    authorization:
+      enabled: true
+    client:
+      base-url: https://localhost:8080/engine-rest
+    tasklist: 
+      base-url: https://localhost:8080/camunda/app/tasklist/default/
+    filters:
+      reinicio: 56227959-82e7-11ee-b4a1-201e886222c7
+    database:
+      schema-update: false
+
+management:
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+markey:
+  service:
+    facturador: https://apiqa.hospitalaustral.edu.ar/facturadorRest/ObtenerModuloCPT_000032CNS
+    fdHMiddleware: https://ext_pp.hospitalaustral.edu.ar/FdHMiddleware/api
+    
+sap:
+  service:
+   materiales: http://srv-qa-pi01-h.hospital.austral:50000/RESTAdapter/I_ECC/ObtenerMaterial
+   user: Sap_Markey_P_Cost_WS
+   pass: 6V%6sqKVn
+    
+his:
+  service:
+    url: https://webapi_pr.hospitalaustral.edu.ar/HismiddlewareRestApi/api
+
+soep:
+  service:
+    url: https://webapi_pp.hospitalaustral.edu.ar/HismiddlewareRestApiDesa/api
+    
+directory:
+  service:
+    appId: 814E8A74-BFD1-426F-9999-E20DEEC93DC9
+    tipoDNI: 331abbe6-f32f-4d16-8125-e6ecd157c642
+    url: https://webapi_pp.hospitalaustral.edu.ar/DirectorioMiddlewareRestAPI/api/Security
+    
+bpmLegacy:
+  service:
+    url: https://webapi_pp.hospitalaustral.edu.ar/bpm/api/BPM/ObtenerCasosCirugias
+    

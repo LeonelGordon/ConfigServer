@@ -1,0 +1,104 @@
+spring:
+  sql:
+    init:
+      mode: always
+  mvc:
+    dispatch-options-request: true
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  datasource:
+    url: jdbc:sqlserver://srv-qa-sql001-h:1433;database=BPMBussines;integratedSecurity=false;user=HUA-BPM;password=5ua8m9;instanceName=SQLEXPRESS;    
+    username: HUA-BPM
+    password: 5ua8m9
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+
+## File Storage Properties
+# All files uploaded through the REST API will be stored in this directory
+file.upload-dir: E:/bpm/files/
+
+## CORS ORIGIN
+cors:
+  mapping: "/**"
+  allowed-origins: https://bpmqa.hospitalaustral.edu.ar, https://bpmqa.hospitalaustral.edu.ar:80, https://bpmqa.hospitalaustral.edu.ar:8080, https://10.63.32.26:8080, https://10.63.32.26:80, http://localhost:4200
+  allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+  allowed-head: "*"
+  
+server:
+  port: 9091
+  ssl:
+    key-alias: le-faac2601-a0dd-4cef-a7b4-e78a6ecd624e
+    key-store-password: asdf1234 
+    key-store-type: PKCS12
+    key-store: classpath:keystore/HUA2025.pfx
+    enabled: true
+    
+trust.store: classpath:keystore/HUA2025.pfx
+trust.store.password: asdf1234
+
+camunda:
+  bpm:
+    client:
+      base-url: https://bpmqa.hospitalaustral.edu.ar/engine-rest
+    tasklist: 
+      base-url: https://bpmqa.hospitalaustral.edu.ar/camunda/app/tasklist/default/
+    filters:
+      reinicio: 3451203b-8e25-11ee-85c3-0050569b73c0
+    database:
+      schema-update: false
+
+
+management:
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+markey:
+  service:
+    facturador: https://serviciosqa.hospitalaustral.edu.ar/facturadorRest/ObtenerModuloCPT_000032CNS
+    fdHMiddleware: https://ext_pp.hospitalaustral.edu.ar/FdHMiddleware/api
+
+sap:
+  service:
+   materiales: http://srv-qa-pi01-h.hospital.austral:50000/RESTAdapter/I_ECC/ObtenerMaterial
+   user: Sap_Markey_Q_Cost_WS
+   pass: M4rk3y_QA_
+his:
+  service:
+    url: https://apiqa.hospitalaustral.edu.ar/HISMiddlewareRestAPI/api
+
+soep:
+  service:
+    url: https://apiqa.hospitalaustral.edu.ar/HismiddlewareRestApi/api
+
+directory:
+  service:
+    appId: 6342c331-399e-4f63-a42e-41f373e55dc6
+    tipoDNI: 331abbe6-f32f-4d16-8125-e6ecd157c642
+    url: https://apiqa.hospitalaustral.edu.ar/DirectorioMiddlewareRestAPI/api/Security
+
+bpmLegacy:
+  service:
+    url: https://apiqa.hospitalaustral.edu.ar/BPM/api/BPM/ObtenerCasosCirugias

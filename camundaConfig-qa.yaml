@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=camunda
+    username: postgres
+    password: Hua@9723(CAM_qa)
+    
+server:
+  port: 443
+  ssl:
+    key-alias: le-faac2601-a0dd-4cef-a7b4-e78a6ecd624e
+    key-store-password: asdf1234 
+    key-store-type: PKCS12
+    key-store: classpath:keystore/HUA2025.pfx
+    enabled: true
+
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+  
+trust:
+  store:
+    classpath: keystore/HUA2025.pfx
+    password: asdf1234
+
+camunda:
+  bpm:
+    authorization:
+      enabled: true
+    webapp:
+      header-security:
+        content-security-policy-disabled: true
+        
+encryption:
+  sharedSecret: SecretText_XHGFXHGF1X2HGF3XHG4XF5
+        
+directory:
+  service:
+    url: https://bpmqa.hospitalaustral.edu.ar:9091/directorio/AutenticarPersona
