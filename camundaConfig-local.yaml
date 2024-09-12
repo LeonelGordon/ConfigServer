@@ -6,6 +6,8 @@ spring:
     
 server:
   port: 8089
+  servlet:
+    context-path: /camunda
   ssl:
     key-alias: local_ssl
     key-store-password: thankit
