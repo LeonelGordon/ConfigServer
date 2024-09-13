@@ -34,7 +34,7 @@ file.upload-dir: C:/bpm/files/
 ## CORS ORIGIN
 cors:
   mapping: "/**"
-  allowed-origins: https://localhost, https://localhost:80, https://localhost:8080, http://localhost:8080, http://localhost:4300, https://localhost:4300, http://localhost:80, http://localhost, https://localhost:8089, http://localhost:8089
+  allowed-origins: https://localhost, https://localhost:80, https://localhost:8080, http://localhost:8080, http://localhost:4200, https://localhost:4200, http://localhost:4300, http://localhost:4300/Formulario/, https://localhost:4300, http://localhost:80, http://localhost, https://localhost:8089, http://localhost:8089  	
   allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
   allowed-head: "*"
   
